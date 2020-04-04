@@ -7,7 +7,7 @@ author:     "chanweiyan"
 header-img: "img/cwy/rails/ruby-on-rails-1.png"
 catalog: true
 tags:
-    - ruby on rails
+    - Ruby on Rails
     - 编程
 ---
 

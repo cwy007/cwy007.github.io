@@ -6,7 +6,7 @@ author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - ruby
+  - Ruby
   - 翻译
 ---
 
