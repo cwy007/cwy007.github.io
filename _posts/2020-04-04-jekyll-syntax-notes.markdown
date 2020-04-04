@@ -1,18 +1,21 @@
 ---
 layout:       post
-title:        "饿了么的 PWA 升级实践"
-subtitle:     "Upgrading Ele.me to Progressive Web App"
-date:         2017-07-12 12:00:00
-author:       "Hux"
+title:        "Jekyll 语法使用说明"
+subtitle:     "收集和记录一些不熟悉的 Jekyll 语法"
+date:         2020-04-04 11:41:00
+author:       "chanweiyan"
 header-img:   "img/in-post/post-eleme-pwa/eleme-at-io.jpg"
 header-mask:  0.3
 catalog:      true
-multilingual: true
+multilingual: false # 文章有多个语言版本
 tags:
-    - Web
-    - PWA
+    - Jekyll
 ---
 
+## 文章翻译：中英切换的实现
+
+```html
+{% raw %}
 <!-- Chinese Version -->
 <div class="zh post-container">
     {% capture about_zh %}
@@ -28,3 +31,9 @@ tags:
     {% endcapture %}
     {{ about_en | markdownify }}
 </div>
+{% endraw %}
+```
+
+## 参考文章
+
+1. [Jekyll使用教程笔记 六](https://juejin.im/post/5b399ee2f265da595a5e5106)

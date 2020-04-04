@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Linux 操作系统：gzip && gunzip"
-subtitle:   "《Linux 操作系统》文件压缩 gzip"
+title:      "Linux 操作系统：gzip 和 gunzip"
+subtitle:   "《Linux 操作系统》gzip 文件压缩程序的用法介绍"
 date:       2020-04-04 10:54:00
 author:     "chanweiyan"
 header-img: "img/cwy/post-bg/unix-linux.jpg"
