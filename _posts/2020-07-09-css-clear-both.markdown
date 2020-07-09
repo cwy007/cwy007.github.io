@@ -10,7 +10,11 @@ tags:
   - CSS
 ---
 
-手动清除浮动
+#### css 中的浮动现象
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggkslli66rj310m0ju776.jpg)
+
+#### 手动清除浮动
 
 ```css
 .clear:after {
@@ -19,5 +23,7 @@ tags:
   clear: both
 }
 ```
+
+#### 参考链接
 
 * [CSS 浮动](https://www.w3school.com.cn/css/css_positioning_floating.asp)
