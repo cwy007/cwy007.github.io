@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "手动清除浮动 float"
+title:      "CSS: 手动清除浮动 float"
 subtitle:   "clear: both"
 date:       2020-07-09 16:10:00
 author:     "chanweiyan"

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "sudo ls /root"
+title:      "Linux: sudo ls /root"
 subtitle:   "谁可以使用  允许使用的主机=（以谁的身份）  可执行命令的列表"
 date:       2020-07-07 16:18:00
 author:     "chanweiyan"

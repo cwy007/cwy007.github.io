@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "su命令与用户名之间的减号`-`"
+title:      "Linux: su命令与用户名之间的减号`-`"
 subtitle:   "su - linuxprobe 这意味着完全切换到新的用户"
 date:       2020-07-07 15:53:00
 author:     "chanweiyan"

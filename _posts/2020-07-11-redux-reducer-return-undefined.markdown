@@ -1,14 +1,17 @@
 ---
 layout:     post
-title:      "reducer "visibilityFilter" returned undefined"
-subtitle:   "Error: Given action "SET_VISIBILITY_FILTER", reducer "visibilityFilter" returned undefined."
+title:      "React: reducer visibilityFilter returned undefined"
+subtitle:   "Error: Given action SET_VISIBILITY_FILTER, reducer visibilityFilter returned undefined."
 date:       2020-07-11 12:00:00
 author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
   - React
+  - Redux
 ---
+
+## 报错信息
 
 Error: Given action "SET_VISIBILITY_FILTER", reducer "visibilityFilter" returned undefined. To ignore an action, you must explicitly return the previous state. If you want this reducer to hold no value, you can return null instead of undefined.
 
@@ -25,9 +28,9 @@ src/containers/FilterLink.js:12
   15 | // export
 ```
 
-![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggmwg6v6m3j30wt0u0te7.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ggmwxlme6mj31ak0o813z.jpg)
 
-## 原因
+## 错误原因
 
 输入错误 SHO_COMPLETED
 VisibilityFilters.SHO_COMPLETED
