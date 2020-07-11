@@ -15,7 +15,7 @@ tags:
 
 Error: Given action "SET_VISIBILITY_FILTER", reducer "visibilityFilter" returned undefined. To ignore an action, you must explicitly return the previous state. If you want this reducer to hold no value, you can return null instead of undefined.
 
-```js
+```jsx
 
 onClick
 src/containers/FilterLink.js:12
@@ -35,7 +35,7 @@ src/containers/FilterLink.js:12
 输入错误 SHO_COMPLETED
 VisibilityFilters.SHO_COMPLETED
 
-```js
+```jsx
 <FilterLink filter={VisibilityFilters.SHO_COMPLETED}>
   禁用
 </FilterLink>
@@ -45,7 +45,7 @@ VisibilityFilters.SHO_COMPLETED
 
 将 SHO_COMPLETED 改为 SHOW_COMPLETED
 
-```js
+```jsx
 <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
   禁用
 </FilterLink>

@@ -15,7 +15,7 @@ tags:
 
 容器组件
 
-```js
+```jsx
 import { Provider } from 'react-redux';
 
 // render
@@ -29,7 +29,7 @@ ReactDOM.render(
 
 ## mapStateToProps
 
-```js
+```jsx
 // mapStateToProps
 // 页面上的数据通过这个函数获取
 const mapStateToProps = state => ({
@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
 
 ## mapDispatchToProps
 
-```js
+```jsx
 // mapDispatchToProps
 const mapDispatchToProps = dispatch => ({
   toggleTodo: id => dispatch(toggleTodo(id))
@@ -51,7 +51,7 @@ const mapDispatchToProps = dispatch => ({
 
 ## connect
 
-```js
+```jsx
 import { connect } from 'react-redux';
 
 // export
@@ -64,7 +64,7 @@ export default connect(
 
 ## combineReducers
 
-```js
+```jsx
 import { combineReducers } from 'redux';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
