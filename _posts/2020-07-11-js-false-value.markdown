@@ -10,7 +10,7 @@ tags:
   - JavaScript
 ---
 
-## js中布尔值为false的6中情况
+## 布尔值为false的6种情况
 
 下面6种值转化为布尔值时为false，其他转化都为true
 
