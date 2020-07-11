@@ -15,3 +15,5 @@ tags:
 * [回车和换行](http://www.ruanyifeng.com/blog/2006/04/post_213.html)
 * [字符编码笔记：ASCII，Unicode 和 UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
 * [容错，高可用和灾备](http://www.ruanyifeng.com/blog/2019/11/fault-tolerance.html)
+* [关于计算机科学的50个误解](http://www.ruanyifeng.com/blog/2019/11/50-cs-falsehoods.html)
+* [关于Unix哲学](http://www.ruanyifeng.com/blog/2009/06/unix_philosophy.html)
