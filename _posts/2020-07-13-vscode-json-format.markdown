@@ -13,11 +13,12 @@ tags:
 Cancelling vscode warnning `Incorrect type. Expected "String"`
 
 ```json
+// ~/Library/Application Support/Code/User/settings.json
 
-  "json.schemas": [{
-    "fileMatch": ["**/*.json"],
-    "url": "http: //json.schemastore.org/chrome-manifest"
-  }],
+"json.schemas": [{
+  "fileMatch": ["**/*.json"],
+  "url": "http: //json.schemastore.org/chrome-manifest"
+}],
 ```
 
 * https://stackoverflow.com/questions/58944042/cancelling-vscode-warnning-incorrect-type-expected-array
