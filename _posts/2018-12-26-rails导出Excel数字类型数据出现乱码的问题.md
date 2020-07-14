@@ -7,8 +7,7 @@ author:     "chanweiyan"
 header-img: "img/cwy/rails/ruby-on-rails-1.png"
 catalog: true
 tags:
-    - Ruby on Rails
-    - 编程
+  - Rails
 ---
 
 #### 遇到的问题

@@ -7,7 +7,6 @@ header-style: text
 catalog: true
 tags:
   - Ruby
-  - 翻译
 ---
 
 #### 目录结构
