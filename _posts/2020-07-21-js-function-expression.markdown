@@ -2,7 +2,7 @@
 layout:     post
 title:      "JavaScript: 区分函数声明和表达式最简单的方法"
 subtitle:   "function 关键字是否位于声明的开始"
-date:       2020-07-21 24:03:00
+date:       2020-07-21 01:03:00
 author:     "chanweiyan"
 header-style: text
 catalog: true

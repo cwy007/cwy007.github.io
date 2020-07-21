@@ -2,7 +2,7 @@
 layout:     post
 title:      "JavaScript: es5 中的模块介绍"
 subtitle:   "为模块定义引入包装函数，并保证它的返回值和模块的API保持一致。"
-date:       2020-07-21 24:10:00
+date:       2020-07-21 01:10:00
 author:     "chanweiyan"
 header-style: text
 catalog: true
