@@ -22,6 +22,8 @@ Go to `Code` -> `Preferences` -> `Settings` and change the following entry from 
 
 Now JSDoc comments are folding as expected, hope this works for you as well!
 
+<https://stackoverflow.com/questions/51413448/jsdoc-comment-folding-in-vscode>
+
 ## 效果图
 
 ![折叠前](https://tva1.sinaimg.cn/large/007S8ZIlly1gj96y7aqduj314q0rwq7s.jpg)
