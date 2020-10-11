@@ -1,0 +1,34 @@
+---
+layout:     post
+title:      "JavaScript: 立即执行函数前面添加分号';'的作用"
+subtitle:   ";(function(){})();"
+date:       2020-10-11 20:15:00
+author:     "chanweiyan"
+header-style: text
+catalog: true
+tags:
+  - JavaScript
+---
+
+## 问题：前面问什么添加分号
+
+![前面问什么添加分号](https://tva1.sinaimg.cn/large/007S8ZIlly1gjlnr4tgr5j31ke0u0k3l.jpg)
+<https://github.com/madrobby/zepto/blob/b5ed8d607f67724788ec9ff492be297f64d47dfc/src/fx.js#L5>
+
+## 解释
+
+对于常见的(function($){...})(jQuery);即是将实参jQuery传入函数function($){}，通过形参$接收。
+上述函数中，最开始的那个括号，可能会由于js中自动分号插入机制而引发问题。
+
+```javascript
+a  =  b  +  c
+;（function  （） {
+  // code
+}）（）;
+```
+
+如果没有第二行的分号，那么该处有可能被解析为c()而开始执行。所以有的时候，可能会看到这样的写法：;(function foo(){/*...*/}())，前边的分号可以认为是防御型分号。
+
+## 参考
+
+1. <https://blog.csdn.net/fengxing_2/article/details/83538442>
