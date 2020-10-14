@@ -8,6 +8,7 @@ header-style: text
 catalog: true
 tags:
   - JavaScript
+  - 开发文档
 ---
 
 ## @methed 声明函数或类方法，用法
