@@ -54,7 +54,7 @@ console.log(Math.max.call(null, arr[0], arr[1], arr[2], arr[3], arr[4])); //10
 
 采纳以参数列表的形式传入，而apply以参数数组的形式传入。
 
-### apply方法
+### bind方法
 
 ```js
 var arr=[1,10,5,8,12];
