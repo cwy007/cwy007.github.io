@@ -44,8 +44,17 @@ function foo() {
 }
 ```
 
-+ await后面接一个会return new promise的函数并执行它
-+ await只能放在async函数里
+### await 等到之后，做了一件什么事情？
+
+那么右侧表达式的结果，就是await要等的东西。
+
+等到之后，对于await来说，分2个情况
+
++ 不是promise对象
++ 是promise对象
+
+>如果不是 promise , await会阻塞后面的代码，先执行async外面的同步代码，同步代码执行完，再回到async内部，把这个非promise的东西，作为 await表达式的结果。
+>如果它等到的是一个 promise 对象，await 也会暂停async后面的代码，先执行async外面的同步代码，等着 Promise 对象 fulfilled，然后把 resolve 的参数作为 await 表达式的运算结果。
 
 ```js
 function fn(){
@@ -63,19 +72,6 @@ console.log(3)
 //3
 ```
 这个代码因为fn是属于同步的，所以先打印出1，然后是3，但是因为没有resolve结果，所以await拿不到值，因此不会打印2
-
-
-**await 等到之后，做了一件什么事情？**
-
-那么右侧表达式的结果，就是await要等的东西。
-
-等到之后，对于await来说，分2个情况
-
-+ 不是promise对象
-+ 是promise对象
-
->如果不是 promise , await会阻塞后面的代码，先执行async外面的同步代码，同步代码执行完，再回到async内部，把这个非promise的东西，作为 await表达式的结果。
->如果它等到的是一个 promise 对象，await 也会暂停async后面的代码，先执行async外面的同步代码，等着 Promise 对象 fulfilled，然后把 resolve 的参数作为 await 表达式的运算结果。
 
 ```js
 function fn(){
