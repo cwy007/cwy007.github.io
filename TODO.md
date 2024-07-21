@@ -42,4 +42,3 @@ export NVM_IOJS_ORG_MIRROR=https://npm.taobao.org/mirrors/iojs
 <https://github.com/nvm-sh/nvm>
 
 npm config set registry https://registry.npm.taobao.org/
-

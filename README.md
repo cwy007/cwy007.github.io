@@ -20,3 +20,7 @@ bundle exec jekyll serve --watch
 - git commit
 - git push 到 github
 - 等一会刷新 `cwy007.github.io` 页面就会看到新的文章
+
+## refs
+
+<https://jekyllrb.com/docs/structure/>
