@@ -1,0 +1,130 @@
+---
+layout:     post
+title:      vim
+subtitle:
+date:       2025-08-16 16:56:00
+author:     "chanweiyan"
+header-style: text
+catalog: false
+tags:
+  - vim
+---
+
+## vim 01
+
+> 对于很多 Vim 的命令，我们是需要形成“肌肉记忆”的
+>
+> 要多看、多练，熟能生巧
+>
+> 学 Vim 学到的东西不会过时
+>
+> 有一颗勇于探索的心，愿意花点力气把手里的“武器”打造得更为好用、称心
+>
+>
+
+- 安装homebrew
+
+修改 `~/.zprofile`
+
+```bash
+# 这段代码的作用是 修改系统的 PATH 环境变量，确保 ~/bin（当前用户的 bin 目录）和 /usr/local/bin、/usr/local/sbin 等路径被正确添加到 PATH 的开头，同时避免重复添加。
+#
+# ~/bin:/usr/local/bin:/usr/local/sbin:<原始PATH，但移除了已有的$HOME/bin和/usr/local/bin>
+# 关键部分：
+#   echo $PATH | sed -e "s!:$HOME/bin!!" -e 's!:/usr/local/bin!!'
+#   使用 sed 删除 PATH 中可能已经存在的 :$HOME/bin 和 :/usr/local/bin（避免重复）。
+#   s!<pattern>!! 是 sed 的替换命令，! 是分隔符（代替常用的 /，避免和路径中的 / 冲突）。
+
+# 这段代码的目的是 确保某些关键路径在 PATH 中优先级最高，同时避免重复添加，常见于 Shell 配置
+if [[ $PATH != "$HOME/bin"* ]]; then
+   PATH=~/bin:/usr/local/bin:/usr/local/sbin:`echo $PATH|sed -e "s!:$HOME/bin!!" -e 's!:/usr/local/bin!!'`
+fi
+
+```
+
+> 查看环境变量 `echo $PATH | tr ":" "\n"`
+
+## brew install macvim
+
+Homebrew 有两种安装方式：
+
+- Formula（公式）：通常用于安装命令行工具或开源软件（如 git, python）。
+
+- Cask（容器）：用于安装图形界面（GUI）应用（如 Google Chrome, Visual Studio Code）。
+
+> Warning: Treating macvim as a formula. For the cask, use homebrew/cask/macvim or specify the `--cask` flag. To silence this message, use the `--formula` flag.
+>
+> 第一句：Homebrew 默认将 macvim 当作 Formula 处理（即从源码编译安装）。
+>
+> 第二句：如果你想用 Cask 方式安装（直接下载预编译的 .app），可以：
+>
+> 使用完整路径 homebrew/cask/macvim，或
+>
+> 加上 --cask 参数。
+>
+> 第三句：如果你确实想用 Formula 安装，可以加上 --formula 参数来关闭这个提示。
+>
+
+- vim ~/.zprofile # 纯文本界面的vim
+- gvim ~/.zprofile # 图形界面的vim
+- mvim ~/.zprofile # 图形界面的vim
+
+## vim 中文教程
+
+> Vim 教程支持多语言，可使用命令 vimtutor 来启动
+
+LANG=zh_CN.UTF-8 vimtutor
+
+中文帮助文件
+
+```bash
+cd ~/.vim
+mkdir -p pack/my/start
+git clone https://github.com/yianwillis/vimcdoc.git pack/my/start/vimcdoc
+
+```
+
+## macbook更改caps lock键为esc键/ctrl键
+
+Caps lock 改键
+
+系统偏好设置－－－键盘－－－修饰键－－－capslock键：Escape/Control
+
+如果是外接键盘，则需要在 修饰键 的标签页里面选择键盘.
+
+## 使用安装包安装 MacVim
+
+```bash
+# 代码逐行解析
+# 1. [ -d ~/bin ] || mkdir ~/bin
+#    [ -d ~/bin ]
+#    检查 ~/bin 目录是否存在。
+#    -d 是测试条件，表示“目录是否存在”。
+#    ||
+#    逻辑“或”操作，如果前面的命令失败（目录不存在），则执行后面的命令。
+#    mkdir ~/bin
+#    创建 ~/bin 目录。
+# 作用：
+# 如果 ~/bin 不存在，则创建它。
+
+# 2. ln -s /Applications/MacVim.app/Contents/bin/* ~/bin/
+#    ln -s
+#    创建符号链接（软链接）。
+#    -s 表示软链接（类似于 Windows 的快捷方式）。
+#    /Applications/MacVim.app/Contents/bin/*
+#    MacVim 安装后提供的命令行工具路径，通常包含以下可执行文件：
+#    mvim：启动 MacVim 的 GUI 或终端版本。
+#    gvim、vim、view 等（取决于 MacVim 的版本）。
+#    ~/bin/
+#    目标目录，软链接会被创建在这里。
+# 作用：
+# 将 MacVim 的所有命令行工具软链接到 ~/bin/，使得用户可以在终端直接调用（如 mvim filename）。
+
+[ -d ~/bin ] || mkdir ~/bin
+ln -s /Applications/MacVim.app/Contents/bin/* ~/bin/
+
+```
+
+## links
+
+- [https://brew.sh/](https://brew.sh/)
