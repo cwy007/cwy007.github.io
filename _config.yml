@@ -25,6 +25,9 @@ facebook_username:  cwy007
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
+# use pretty permalink, e.g. http://example.com/2012/08/23/my-post/
+# for more permalink options, see http://jekyllrb.com/docs/permalinks/
+# if you want to use pretty permalink, make sure your posts have the date format in filename, e.g. `2012-08-23-my-post.md`
 permalink: pretty
 paginate: 10
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
