@@ -1,3 +1,7 @@
+---
+hide-in-nav: true
+---
+
 # 项目使用手册
 
 本项目是一个基于 [Jekyll](https://jekyllrb.com/) 搭建的静态博客项目，采用了定制过的
