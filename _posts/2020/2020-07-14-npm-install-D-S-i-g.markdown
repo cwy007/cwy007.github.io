@@ -1,13 +1,13 @@
 ---
 layout:     post
-title:      "Node.js: npm -D -S -g -i 以及安装技巧"
+title:      "NodeJS: npm -D -S -g -i 以及安装技巧"
 subtitle:   "npm i webpack webpack-cli -D"
 date:       2020-07-14 00:04:00
 author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - Node.js
+  - NodeJS
 ---
 
 ## npm -D -S -g -i 以及安装技巧

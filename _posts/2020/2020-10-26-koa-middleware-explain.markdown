@@ -1,14 +1,14 @@
 ---
 layout:     post
-title:      "Node.js: 50行代码学会koa2中间件原理"
-subtitle:   "koa: Next generation web framework for Node.js"
+title:      "NodeJS: 50行代码学会koa2中间件原理"
+subtitle:   "koa: Next generation web framework for NodeJS"
 date:       2020-10-26 21:05:00
 author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
   - JavaScript
-  - Node.js
+  - NodeJS
 ---
 
 

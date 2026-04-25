@@ -7,7 +7,7 @@ author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - Node.js
+  - NodeJS
 ---
 
 使用nrm工具切换淘宝源

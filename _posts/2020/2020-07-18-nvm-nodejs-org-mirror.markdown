@@ -1,13 +1,13 @@
 ---
 layout:     post
-title:      "Node.js: nvm 和 npm 使用淘宝镜像"
+title:      "NodeJS: nvm 和 npm 使用淘宝镜像"
 subtitle:   "设置环境变量 NVM_NODEJS_ORG_MIRROR"
 date:       2020-07-18 19:08:00
 author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - Node.js
+  - NodeJS
 ---
 
 nodejs和npm的仓库托管在S3上，在国内访问十分困难，这里可以用淘宝的镜像站npm.taobao.org代替。

@@ -10,7 +10,7 @@ Hux Blog 主题，并结合 npm 和 Grunt 进行前端资源的开发与构建�
 
 ## 环境准备
 
-本项目需要配置 Ruby（用于 Jekyll）和 Node.js（用于前端资源构建）环境。
+本项目需要配置 Ruby（用于 Jekyll）和 NodeJS（用于前端资源构建）环境。
 
 1. **安装 Ruby 依赖**
    进入项目根目录，使用 bundler 安装所需的 Gem 包：
@@ -21,7 +21,7 @@ Hux Blog 主题，并结合 npm 和 Grunt 进行前端资源的开发与构建�
 
    > 提示：项目 `Gemfile` 已配置 Ruby China 镜像源 (`https://gems.ruby-china.com`)。
 
-2. **安装 Node.js 依赖**
+2. **安装 NodeJS 依赖**
    项目包含了一个 `package.json`，包含了 Grunt 和用于编译静态文件的相关插件：
    ```bash
    npm install
