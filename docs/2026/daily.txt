@@ -1,0 +1,34 @@
+
+## 每周计划 - 每周写一个ARTS
+
+eat your own dog food.
+坚持一年
+
+- Algorithm 写一道算法题
+- Review 读一篇英文文章
+- Technique/Tips 分享一个小技术
+- Share 分享一个观点
+
+## schedule
+
+```txt
+
+```
+
+## timeline
+
+```txt
+
+```
+
+## todos
+
+```txt
+
+```
+
+## logs
+
+```txt
+
+```
