@@ -8,6 +8,7 @@ author: "chanweiyan"
 catalog: true
 tags:
   - NestJS
+  - vscode
 ---
 
 ## 在 VSCode 里边写代码边调试
