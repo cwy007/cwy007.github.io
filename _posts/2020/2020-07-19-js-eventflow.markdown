@@ -7,7 +7,7 @@ author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - JavaScript
+  - Javascript
 ---
 
 事件传递的3个阶段

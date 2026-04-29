@@ -7,7 +7,7 @@ author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - JavaScript
+  - Javascript
 ---
 
 ### 为什么要改变this指向？

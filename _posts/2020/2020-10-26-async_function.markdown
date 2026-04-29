@@ -7,7 +7,7 @@ author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - JavaScript
+  - Javascript
 ---
 
 >async函数是AsyncFunction构造函数的实例， 并且其中允许使用await关键字。async和await关键字让我们可以用一种更简洁的方式写出基于Promise的异步行为，而无需刻意地链式调用promise。

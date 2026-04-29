@@ -7,7 +7,7 @@ author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - JavaScript
+  - Javascript
 ---
 
 function 关键字是否位于声明的开始

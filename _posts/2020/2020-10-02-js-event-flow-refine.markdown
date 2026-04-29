@@ -7,7 +7,7 @@ author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - JavaScript
+  - Javascript
 ---
 
 ## 避免事件重复触发

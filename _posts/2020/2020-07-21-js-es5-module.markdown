@@ -7,7 +7,7 @@ author:     "chanweiyan"
 header-style: text
 catalog: true
 tags:
-  - JavaScript
+  - Javascript
 ---
 
 为模块定义引入包装函数，并保证它的返回值和模块的API保持一致。

@@ -5,7 +5,7 @@ subtitle: '对象模型：基于类 class VS 基于原型 prototype'
 author: "chanweiyan"
 header-style: text
 tags:
-- JavaScript
+- Javascript
 ---
 
 阅读过的介绍 javascript 对象模型的文章的链接
