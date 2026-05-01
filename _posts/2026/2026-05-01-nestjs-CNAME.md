@@ -69,25 +69,27 @@ api.example.com.  IN CNAME  ecs-1-2-3-4.compute.aliyun.com.
 ### 2. Nginx 反向代理 + HTTPS
 
 ```nginx
+# ① 80 端口：所有 http 请求强制跳转到 https
 server {
   listen 80;
-  server_name api.example.com;
-  return 301 https://$host$request_uri;
+  server_name api.example.com;                        # 匹配的域名（与 DNS 解析的域名一致）
+  return 301 https://$host$request_uri;               # 301 永久重定向：保留原始 host + 路径 + query
 }
 
+# ② 443 端口：真正处理 https 请求并反代给 NestJS
 server {
-  listen 443 ssl http2;
+  listen 443 ssl http2;                               # 监听 443，启用 TLS 与 HTTP/2
   server_name api.example.com;
 
-  ssl_certificate     /etc/letsencrypt/live/api.example.com/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/api.example.com/privkey.pem;
+  ssl_certificate     /etc/letsencrypt/live/api.example.com/fullchain.pem;   # Let's Encrypt 证书链
+  ssl_certificate_key /etc/letsencrypt/live/api.example.com/privkey.pem;     # 对应的私钥
 
   location / {
-    proxy_pass http://127.0.0.1:3000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_pass http://127.0.0.1:3000;                                        # 反向代理到本机的 NestJS
+    proxy_set_header Host $host;                                             # 透传客户端请求的 Host 头
+    proxy_set_header X-Real-IP $remote_addr;                                 # 透传客户端真实 IP
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;             # 追加到 XFF 链：client, proxy1, proxy2...
+    proxy_set_header X-Forwarded-Proto $scheme;                              # 告诉后端原始协议是 http 还是 https
   }
 }
 ```
