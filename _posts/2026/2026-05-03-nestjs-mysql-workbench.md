@@ -78,3 +78,132 @@ DROP DATABASE `hello_mysql`;
 其余的类型用到再查也行。
 
 这里还有个 TIMESTAMP 类型，它也是存储日期时间的，但是范围小一点，而且会转为中央时区 UTC 的时间来存储。
+
+## 查询语句
+
+```sql
+
+SELECT * FROM hello_mysql.student;
+
+SELECT
+    `name`, `score`
+FROM
+    `hello_mysql`.`student`;
+
+SELECT
+    `name` AS '姓名', score AS '分数', age
+FROM
+    hello_mysql.student
+WHERE
+    age >= 19 AND score > 80;
+
+SELECT
+    *
+FROM
+    student
+WHERE
+    name LIKE '王%';
+
+SELECT
+    *
+FROM
+    student
+WHERE
+    class NOT IN ('一班' , '二班');
+
+SELECT
+    *
+FROM
+    student
+WHERE
+    age BETWEEN 18 AND 20;
+
+SELECT
+    *
+FROM
+    student
+LIMIT 0 , 5;
+
+SELECT
+    *
+FROM
+    student
+LIMIT 5;
+
+SELECT
+    *
+FROM
+    student
+LIMIT 5 , 5;
+
+SELECT
+    name, score, age
+FROM
+    student
+ORDER BY score ASC , age DESC;
+
+select class as 班级, avg(score) as 平均成绩 from student group by class order by 平均成绩 desc;
+
+select class, count(*) as count from student group by class;
+
+select class, avg(score) as avg_score from student group by class having avg_score > 90;
+
+SELECT
+    class
+FROM
+    student;
+
+SELECT DISTINCT
+    class
+FROM
+    student;
+
+select avg(score) as 平均成绩, count(*) as 人数, sum(score) as 总成绩, min(score) as 最低分, max(score) as 最高分 from student;
+
+SELECT
+    CONCAT('xx', name, 'yy'),
+    SUBSTR(name, 2, 3),
+    LENGTH(name),
+    UPPER('aa'),
+    LOWER('TT')
+FROM
+    student;
+
+SELECT
+    ROUND(1.234567, 2),
+    CEIL(1.234567),
+    FLOOR(1.234567),
+    ABS(- 1.234567),
+    MOD(5, 2);
+
+SELECT
+    YEAR('2026-05-03 15:09:33'),
+    MONTH('2026-05-03 15:09:33'),
+    DAY('2026-05-03 15:09:33'),
+    DATE('2026-05-03 15:09:33'),
+    TIME('2026-05-03 15:09:33');
+
+select name, if(score >=60, '及格', '不及格') from student;
+
+select name, score, case when score >= 90 then '优秀' when score >= 60 then '良好' else '差' end as '档次' from student;
+
+select version(), database(), user();
+
+select nullif(1,1), nullif(1,2);
+
+select coalesce(null, 1), coalesce(null, null, 2);
+
+select greatest(1,2,3), least(1,2,3,4);
+
+select greatest(1, '123', 3);
+
+select greatest(1, convert('123', signed), 3);
+
+select greatest(1, cast('123' as signed), 3);
+
+select date_format('2026-05-03', '%Y年%m月%d日');
+
+select str_to_date('2026-05-03', '%Y-%m-%d');
+
+
+```
