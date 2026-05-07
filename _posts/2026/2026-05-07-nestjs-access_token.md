@@ -258,6 +258,87 @@ export class AuthController {
 }
 ```
 
+## 第六步：前端 Axios 拦截器实践
+
+在前端（如 Vue、React 项目），我们需要使用 Axios 拦截器来自动携带 Token，并在 `access_token` 过期返回 `401` 状态码时进行无感刷新。结合多请求并发刷新的场景，我们可以实现带有互斥锁与请求队列的完整逻辑：
+
+```javascript
+import axios from 'axios';
+
+const instance = axios.create({
+  baseURL: 'http://localhost:3000',
+});
+
+// 是否正在刷新的标记（互斥锁）
+let isRefreshing = false;
+// 积压的请求队列（存放 Promise 的 resolve 回调）
+let requestsQueue = [];
+
+// 请求拦截器：自动注入 access_token
+instance.interceptors.request.use((config) => {
+  const accessToken = localStorage.getItem('access_token');
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+  return config;
+});
+
+// 响应拦截器：处理 401 无感刷新
+instance.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const { config, response } = error;
+
+    // 如果是 401，且当前接口不是刷新 token 的接口
+    if (response && response.status === 401 && config.url !== '/auth/refresh') {
+      if (!isRefreshing) {
+        isRefreshing = true;
+        try {
+          const refreshToken = localStorage.getItem('refresh_token');
+          // 使用原生的 axios 实例（避免进入拦截器死循环）去调用刷新接口
+          const res = await axios.post('http://localhost:3000/auth/refresh', {}, {
+            headers: { Authorization: `Bearer ${refreshToken}` }
+          });
+
+          const { access_token, refresh_token } = res.data;
+          localStorage.setItem('access_token', access_token);
+          localStorage.setItem('refresh_token', refresh_token);
+
+          // 刷新成功，用新的 Token 执行队列中积压的请求
+          requestsQueue.forEach((cb) => cb(access_token));
+          requestsQueue = []; // 清空队列
+
+          // 重试当前触发 401 的请求
+          config.headers.Authorization = `Bearer ${access_token}`;
+          return instance(config);
+        } catch (refreshErr) {
+          // 刷新也失败（例如 refresh_token 老化），清理登录状态并重定向
+          requestsQueue = [];
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
+          window.location.href = '/login';
+          return Promise.reject(refreshErr);
+        } finally {
+          // 释放刷新锁
+          isRefreshing = false;
+        }
+      } else {
+        // 如果正在刷新中，将其余并行的 401 请求挂起（加入队列）
+        return new Promise((resolve) => {
+          requestsQueue.push((newToken) => {
+            config.headers.Authorization = `Bearer ${newToken}`;
+            resolve(instance(config)); // 挂起，等待刷新成功回调
+          });
+        });
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default instance;
+```
+
 <!-- #region 展开/折叠 -->
 
 <details markdown="1">
