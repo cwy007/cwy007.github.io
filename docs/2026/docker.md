@@ -70,3 +70,8 @@ docker compose down --rmi all
 docker network create common-network
 docker network ls
 docker network -h
+
+## docker exec
+
+docker cp /Users/chanweiyan/nginx-html/conf.d/default.conf nginx1:/etc/nginx/conf.d/default.conf
+docker exec nginx1 nginx -s reload
