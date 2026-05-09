@@ -12,6 +12,8 @@ tags:
   - Docker
 ---
 
+![流量染色](https://cdn.jsdelivr.net/gh/cwy007/pic_bed@main/images/60249ce21c284c928086815fec6801e9~tplv-k3u1fbpfcp-jj-mark%3A3024%3A0%3A0%3A0%3Aq75.awebp)
+
 灰度发布（又称金丝雀发布）是服务发布平滑过渡的重要手段。它可以在不中断核心业务的情况下，让部分用户先体验到新版本。如果有问题也能快速回滚，将影响面控制在最小。
 
 今天我们来看一下，如何使用 Nginx 分别在**非多租户（单租户）场景**和**多租户场景**中实现一套优雅的灰度系统。
@@ -21,6 +23,54 @@ tags:
 简单来说，灰度发布就是：
 部署了新版本（V2），并保留老版本（V1）。
 当流量进入 Nginx 网关时，Nginx 根据特定的策略（比如 Header、Cookie、客户端 IP，甚至是权重），将一小部分请求导向 V2，绝大部分依然保留在 V1。验证无误后，再逐渐增加 V2 的比例，直到 100%。
+
+## 技术实现原理：流量染色
+
+任何庞大且复杂的灰度系统，其底层逻辑几乎都可以回归到两个核心步骤，在业界这被称为**“流量染色”（Traffic Coloring）**：
+
+1. **染色（Coloring）**：当用户第一次发起请求或登录时，系统必须确定该用户应该进入哪个版本。这里可以通过预设的放量比例（如抽样 10%）或特定白名单规则。一旦确定，应用层或响应侧会通过 `Set-Cookie` 在用户浏览器中种下一个持久化标识（例如 `Cookie: gray_version=v2`），这就等于给这个用户的后续所有流量“染上了颜色”。
+2. **分发（Routing）**：当用户带上了被染色的 Cookie 或 Header 再次发起请求到达 Nginx（网关层）时，Nginx 充当路由器的角色。它读取该请求中的“染色”字段，直接基于特定的匹配规则将其精确转发到所对应的后端服务集群地址（老环境或灰度环境）。
+
+基于染色与分发机制，我们可以极大地保护整个业务体系，并且做到针对单个用户的会话状态保持（Session Consistency）。
+
+### NestJS 中的染色代码示例
+
+在网关完成流量分发前，我们需要在业务端完成最初的流量打标。在 NestJS 中，通常会在用户成功登录的接口内，通过向控制器的 `Response` 对象注入标识来实现**应用层主动染色**：
+
+```typescript
+import { Controller, Post, Res, Body } from '@nestjs/common';
+import { Response } from 'express';
+
+@Controller('auth')
+export class AuthController {
+  @Post('login')
+  async login(@Body() loginDto: any, @Res({ passthrough: true }) res: Response) {
+    // 1. 执行常规身份验证逻辑
+    const user = { id: 120, username: 'test_user' }; // 模拟查询到的用户数据
+
+    // 2. 染色逻辑：判断是否在白名单、租户特性或是按确定的比例随机放量
+    // 比如：这里假定所有的 userId 尾号为 0 的用户（约占 10% 流量的特征用户）进入灰度环境
+    const isGrayUser = user.id % 10 === 0;
+
+    // 3. 执行染色：通过 Set-Cookie 下发灰度版本标识
+    if (isGrayUser) {
+      res.cookie('gray_version', 'v2', {
+        httpOnly: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 有效期设为 7 天
+      });
+    } else {
+      // 老旧或正常流量给予原配置
+      res.cookie('gray_version', 'v1', {
+        httpOnly: true,
+      });
+    }
+
+    return { message: '登录成功', user };
+  }
+}
+```
+
+这个前置的染色动作完成后，客户端（如浏览器）在未来的接口请求中都会自行带上这颗关键的 Cookie。接下来的第二步中，Nginx 才能从 Cookie 里提取出 `gray_version` 判断来做网关侧的流量分发。
 
 ## 方案一：非多租户（单租户）架构的灰度实现
 
