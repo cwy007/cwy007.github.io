@@ -84,3 +84,12 @@ mysqladmin -u root -p shutdown
 ```bash
 docker stop <你的容器名或ID>
 ```
+
+```sql
+INSERT INTO `email_login_test`.`user`
+  (`id`, `username`, `password`, `email`)
+  VALUES ('1', 'cwy007', '123456', '1561931060@qq.com');
+
+update `email_login_test`.`user` set email='1561931060@qq.com', username="cwy007", password="123456" where id=1;
+
+```
