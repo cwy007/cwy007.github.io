@@ -75,3 +75,33 @@ docker network -h
 
 docker cp /Users/chanweiyan/nginx-html/conf.d/default.conf nginx1:/etc/nginx/conf.d/default.conf
 docker exec nginx1 nginx -s reload
+
+## oss minio/minio
+
+export MINIO_ROOT_USER=root;
+export MINIO_ROOT_PASSWORD=Cwy17824;
+
+docker run -d -p 9000:9000 -p 9001:9001 \
+-e "MINIO_ROOT_USER=root" \
+-e "MINIO_ROOT_PASSWORD=Cwy17824" \
+-v /Users/chanweiyan/Desktop/oss-minio-docker-data:/data \
+--name minio-container \
+minio/minio server /data \
+--console-address ":9001"
+
+docker run -p 9000:9000 -p 9001:9001 minio/minio server /data --console-address ":9001"
+
+还要指定两个环境变量，MINIO_ROOT_USER 和 MINIO_ROOT_PASSWORD，是用来登录的。
+
+docker run -d \
+  -p 18080:18080 \
+  -p 18888:18888 \
+  -p 19333:19333 \
+  -p 7333:7333 \
+  -p 8080:8080 \
+  -p 8333:8333 \
+  -p 8888:8888 \
+  -p 9333:9333 \
+  -v /Users/chanweiyan/Desktop/oss-seaweedfs-data:/data \
+  --name seaweedfs-container \
+  chrislusf/seaweedfs server -dir=/data -s3
