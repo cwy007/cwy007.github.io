@@ -11,7 +11,7 @@ tags:
 
 ## 通过工具给 LLM 扩展能力
 
-> 定义工具，绑定工具到model，与LLM对话，判断是否需要 tool call, 根据 LLM 返回的工具名称和参数调用工具, 将工具返回的结果添加到 memory 中，继续对话，获取 LLM 的最新返回内容'
+> 定义工具，绑定工具到model，与LLM对话，判断是否需要 tool call, 根据 LLM 返回的工具名称和参数调用工具, 将工具返回的结果添加到 memory 中，继续对话，获取 LLM 的最新返回内容
 
 
 
@@ -184,4 +184,4 @@ console.log("\n最终模型回复：", response.content);
 
 ```
 
-- [api-key](https://bailian.console.aliyun.com/cn-beijing?tab=model#/api-key)
+- [阿里云百炼 api-key](https://bailian.console.aliyun.com/cn-beijing?tab=model#/api-key)
