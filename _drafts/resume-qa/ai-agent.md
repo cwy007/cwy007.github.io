@@ -33,3 +33,14 @@ step3:
 attention is all you need.
 
 self attention
+
+## 知乎知学堂 - 公开课2
+
+function calling - call api, call skill
+skills
+openClaw
+mcp
+
+AI应用开发工程师
+20~35k
+25k
